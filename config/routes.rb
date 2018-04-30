@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :products
+
   resource :cart, only: [:show]
+  resource :book, only: [:show]
 end
