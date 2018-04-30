@@ -4,8 +4,9 @@ Rails.application.routes.draw do
    root :to => 'products#index'
 
 
-  resources :order_items
-  resources :orders
+  resources :order_items do
+    resources :orders
+  end
 
   resources :products
   resource :cart, only: [:show]
