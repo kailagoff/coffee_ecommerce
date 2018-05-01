@@ -1,5 +1,5 @@
 class Book
-  def make_NYT_API_call
+  def self.make_NYT_API_call
     uri = URI("https://api.nytimes.com/svc/search/v2/articlesearch.json")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true

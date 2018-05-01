@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show]
   resource :book, only: [:show]
+  resources :news, only: [:index]
 end
