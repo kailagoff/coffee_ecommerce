@@ -1,16 +1,9 @@
-
-<div id="header">
-  <p>P D X Perk</p>
-</div>
-
-<br><br><br><br>
 <div class="container">
   <% @products.each do |product| %>
     <div class="col-md-3">
-      <%= image_tag product.image.url(:thumb) %>
       <h5><%= link_to product.name, product_path(product) %></h5>
       <h6><%= number_to_currency product.price %></h6>
-      <%= bootstrap_form_for @order_item do |f| %>
+      <%= form_for @order_item do |f| %>
       <%= f.hidden_field :product_id, value: product.id %>
       <%= f.number_field :quantity %>
       <%= f.submit "Add to Cart", class: 'btn btn-info' %>
