@@ -1,6 +1,6 @@
 Product.destroy_all
 
-25.times do |index|
+12.times do |index|
   @product = Product.create!(name: Faker::Coffee.blend_name,
                         price: Faker::Number.decimal(2)
                         )

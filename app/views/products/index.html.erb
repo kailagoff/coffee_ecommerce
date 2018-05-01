@@ -1,10 +1,13 @@
 <div class="container">
   <% @products.each do |product| %>
-  <p><%= product.name %> | <%= number_to_currency product.price %>
-    <%= form_for @order_item do |f| %>
-    <%= f.hidden_field :product_id, value: product.id %>
-    <%= f.number_field :quantity %>
-    <%= f.submit "Add to cart" %>
-    <% end %></p>
-    <% end %>
+    <div class="col-md-3">
+      <h5><%= product.name %></h5>
+      <h6><%= number_to_currency product.price %></h6>
+      <%= bootstrap_form_for @order_item do |f| %>
+      <%= f.hidden_field :product_id, value: product.id %>
+      <%= f.number_field :quantity %>
+      <%= f.submit "Add to Cart", class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
