@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   devise_for :users
    root :to => 'products#index'
 
-
   resources :order_items do
     resources :orders
   end
 
   resources :products do
+  end
+
+  resources :lists do
+    resources :tasks
   end
 
   resource :cart, only: [:show]

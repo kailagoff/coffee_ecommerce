@@ -1,0 +1,12 @@
+<div class="container">
+  <% if @lists.any? %>
+    <h4>Lists:</h4>
+    <ul>
+      <% @lists.each do |list| %>
+        <p><%= link_to list.title, list_path(list) %></p>
+      <% end %>
+    </ul>
+    <% else %>
+    <h5><%= link_to "No lists yet. Add a list.", new_list_path %></h5>
+      <% end %>
+</div>
