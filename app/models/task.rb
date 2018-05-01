@@ -1,3 +1,3 @@
-class Task < ApplicationController
+class Task < ActiveRecord::Base
   belongs_to :list
 end
