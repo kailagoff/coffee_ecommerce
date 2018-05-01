@@ -1,2 +1,31 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+#header {
+  background-image: url("https://images.unsplash.com/photo-1508766917616-d22f3f1eea14?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4e39cec6efe327281a7b5389c84978d6&auto=format&fit=crop&w=700&q=60");
+  background-position: center;
+  padding-bottom: 50px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 420px;
+  margin-top: -150px;
+  color: white;
+  text-shadow: black 2px 2px 2px;
+  letter-spacing: 2px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 250px;
+  padding-top: 150px;
+  font-size: 70px;
+}
+
+.navbar a {
+  color: white;
+  text-shadow: black 2px 2px 2px;
+}

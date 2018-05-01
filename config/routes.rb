@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resources :products
+  resources :products do
+  end
 
   resource :cart, only: [:show]
   resource :book, only: [:show]

@@ -1,0 +1,12 @@
+<% render "layouts/errors", :object => @product %>
+
+<div class="forms">
+  <%= bootstrap_form_for @product, html: { multipart: true } do |f| %>
+    <%= f.file_field :image %>
+    <br>
+    <%= f.submit "Add Image", class: "btn btn-info" %>
+  <% end %>
+  <br>
+
+  <%= link_to "Return home", products_path %>
+</div>
