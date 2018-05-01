@@ -1,0 +1,2498 @@
+  [1m[35m (405.5ms)[0m  [1m[35mCREATE DATABASE "coffee_shop_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (251.7ms)[0m  [1m[35mCREATE DATABASE "coffee_shop_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (45.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (33.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4673855798857094640)[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to DeviseCreateUsers (20180430160948)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (32.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180430160948_devise_create_users.rb:5
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20180430160948_devise_create_users.rb:39
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20180430160948_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430160948"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to AddColumnToUsers (20180430161424)
+  [1m[35m (15.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (32.2ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20180430161424_add_column_to_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430161424"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to CreateActiveStorageTables (20180430161850)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (33.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180430161850_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20180430161850_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180430161850_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20180430161850_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20180430161850_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430161850"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to CreateOrders (20180430162717)
+  [1m[35m (30.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "status" character varying, "account_id" integer, "total_price" decimal)[0m
+  ↳ db/migrate/20180430162717_create_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430162717"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to CreateProducts (20180430162837)
+  [1m[35m (15.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "price" decimal, "name" character varying)[0m
+  ↳ db/migrate/20180430162837_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430162837"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to CreateOrderItems (20180430162930)
+  [1m[35m (31.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" bigserial primary key, "quantity" integer, "product_id" integer, "order_id" integer)[0m
+  ↳ db/migrate/20180430162930_create_order_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180430162930"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Migrating to AddAttachmentImageToProducts (20180501024820)
+  [1m[35m (15.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "image_file_name" character varying[0m
+  ↳ db/migrate/20180501024820_add_attachment_image_to_products.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "image_content_type" character varying[0m
+  ↳ db/migrate/20180501024820_add_attachment_image_to_products.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "image_file_size" integer[0m
+  ↳ db/migrate/20180501024820_add_attachment_image_to_products.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "image_updated_at" timestamp[0m
+  ↳ db/migrate/20180501024820_add_attachment_image_to_products.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180501024820"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Create (16.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-01 15:01:40.498169"], ["updated_at", "2018-05-01 15:01:40.498169"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4673855798857094640)[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:1
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "48.62"], ["name", "Major Delight"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (15.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "98.84"], ["name", "Goodbye Select"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "21.73"], ["name", "Jacked Symphony"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "34.48"], ["name", "Kreb-Full-o Extract"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "99.67"], ["name", "Joe Look"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "71.03"], ["name", "Blue Blend"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "48.51"], ["name", "Summer Volcano"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "16.61"], ["name", "Reg's Select"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "42.62"], ["name", "Captain's Light"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "55.37"], ["name", "Seattle Java"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "67.85"], ["name", "Huggy Breaker"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("price", "name") VALUES ($1, $2) RETURNING "id"[0m  [["price", "64.67"], ["name", "Chocolate "]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (291.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "coffee_shop_test"[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (255.3ms)[0m  [1m[35mCREATE DATABASE "coffee_shop_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (47.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" bigserial primary key, "quantity" integer, "product_id" integer, "order_id" integer)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  ↳ db/schema.rb:45
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "status" character varying, "account_id" integer, "total_price" decimal)[0m
+  ↳ db/schema.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  ↳ db/schema.rb:51
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "price" decimal, "name" character varying, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp)[0m
+  ↳ db/schema.rb:51
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:60
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "admin" boolean DEFAULT FALSE)[0m
+  ↳ db/schema.rb:60
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180501024820)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180430160948),
+(20180430161424),
+(20180430161850),
+(20180430162717),
+(20180430162837),
+(20180430162930);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-01 15:01:56.383865"], ["updated_at", "2018-05-01 15:01:56.383865"]]
+  ↳ db/schema.rb:13
+  [1m[35m (76.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2018-05-01 15:01:56.485664"], ["key", "environment"]]
+  ↳ /usr/local/bin/rake:22
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bin/rake:22
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:02:19 -0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  Rendered products/index.html.erb within layouts/application (214.9ms)
+Completed 500 Internal Server Error in 343ms (ActiveRecord: 7.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `bootstrap_form_for' for #<#<Class:0x007fc1dd914438>:0x007fc1dd91c2c8>):
+    10:       <%= image_tag product.image.url(:thumb) %>
+    11:       <h5><%= link_to product.name, product_path(product) %></h5>
+    12:       <h6><%= number_to_currency product.price %></h6>
+    13:       <%= bootstrap_form_for @order_item do |f| %>
+    14:       <%= f.hidden_field :product_id, value: product.id %>
+    15:       <%= f.number_field :quantity %>
+    16:       <%= f.submit "Add to Cart", class: 'btn btn-info' %>
+  
+app/views/products/index.html.erb:13:in `block in _app_views_products_index_html_erb___2714391743455132359_70235311355000'
+app/views/products/index.html.erb:8:in `_app_views_products_index_html_erb___2714391743455132359_70235311355000'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:04:06 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (23.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  Rendered products/index.html.erb within layouts/application (168.3ms)
+  Rendered layouts/_header.html.erb (5.2ms)
+Completed 200 OK in 10310ms (Views: 10264.6ms | ActiveRecord: 30.9ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at 2018-05-01 08:04:16 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:06:41 -0700
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  Rendered products/index.html.erb within layouts/application (8.7ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/order_items" for 127.0.0.1 at 2018-05-01 08:07:28 -0700
+Processing by OrderItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EQYUHE9HIM9hhli8T7BRzytIICAo8/1ajNh/vPDsCiL+uEmchRTcbH9xBl3ZwTyJjrhzPcuzX8ualXTj0Io9LA==", "order_item"=>{"product_id"=>"1", "quantity"=>"1"}, "commit"=>"Add to Cart"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrder Create (0.6ms)[0m  [1m[32mINSERT INTO "orders" ("total_price") VALUES ($1) RETURNING "id"[0m  [["total_price", "48.62"]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Create (2.0ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quantity", 1], ["product_id", 1], ["order_id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/order_items_controller.rb:6
+Redirected to http://localhost:3000/cart
+Completed 302 Found in 38ms (ActiveRecord: 19.0ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:07:28 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 37ms (Views: 27.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:07:33 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  Rendered products/index.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/order_items" for 127.0.0.1 at 2018-05-01 08:08:09 -0700
+Processing by OrderItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"29MnfOhGxvJ7O0Dsjz1TSVp2P9FgtR8mhvUVoxoozjAji4a+Vfa9V4jeEsW/Bt5OFjAFeEt7rXSBkiTadjiyYg==", "order_item"=>{"product_id"=>"2", "quantity"=>"2"}, "commit"=>"Add to Cart"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mOrder Update (0.2ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = $1 WHERE "orders"."id" = $2[0m  [["total_price", "246.3"], ["id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Create (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quantity", 2], ["product_id", 2], ["order_id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/order_items_controller.rb:6
+Redirected to http://localhost:3000/cart
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:08:09 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 34ms (Views: 31.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:08:15 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  Rendered products/index.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 37ms (Views: 33.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/order_items" for 127.0.0.1 at 2018-05-01 08:09:08 -0700
+Processing by OrderItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"11akSv7HS+HDYAXEl5AtLLEPrlwVHzUtSOXlDqEQM3AvDgWIQ3cwRDCFV+2nq6Ar/UmU9T7Rh39PgtR3zQBPIg==", "order_item"=>{"product_id"=>"2", "quantity"=>"1"}, "commit"=>"Add to Cart"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mOrder Update (0.2ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = $1 WHERE "orders"."id" = $2[0m  [["total_price", "345.14"], ["id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Create (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quantity", 1], ["product_id", 2], ["order_id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/order_items_controller.rb:6
+Redirected to http://localhost:3000/cart
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:09:08 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 34ms (Views: 31.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:09:25 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:09:27 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 33ms (Views: 29.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:09:44 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:09:54 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 31ms (Views: 28.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/order_items" for 127.0.0.1 at 2018-05-01 08:09:56 -0700
+Processing by OrderItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7bi0ZhQmt7vjZjXYgbquq5xkmHi0lD/KaJj0MKIXGSMCBunm3nVLGP2RazkXy8PtOZTLZVfUnVt+1f9vgnEuLQ==", "order_item"=>{"product_id"=>"2", "quantity"=>"1"}, "commit"=>"Add to Cart"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/order.rb:10
+  [1m[36mOrder Update (0.2ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = $1 WHERE "orders"."id" = $2[0m  [["total_price", "443.98"], ["id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[36mOrderItem Create (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["quantity", 1], ["product_id", 2], ["order_id", 1]]
+  ↳ app/controllers/order_items_controller.rb:6
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/order_items_controller.rb:6
+Redirected to http://localhost:3000/cart
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:09:56 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2018-05-01 08:13:58 -0700
+Processing by CartsController#show as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = $1 LIMIT $2[0m  [["order_id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:2
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1[0m  [["order_id", 1]]
+  ↳ app/views/carts/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:4
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendered carts/show.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:14:01 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 288ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:14:15 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 47ms (Views: 43.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:25:07 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 640ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:30:24 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:30:29 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 104ms (Views: 70.0ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:30:31 -0700
+Processing by BooksController#show as HTML
+Completed 500 Internal Server Error in 213ms (ActiveRecord: 0.0ms)
+
+
+  
+RestClient::Forbidden (403 Forbidden):
+  
+app/models/book.rb:3:in `make_NYT_API_call'
+app/controllers/books_controller.rb:4:in `show'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:33:37 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:33:43 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 56ms (Views: 34.8ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:33:57 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 1097ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:34:21 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 685ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `snippet' for nil:NilClass):
+    1: <%= @result.snippet %> 
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303899659280'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:35:03 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:35:04 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (9.8ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 1081ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:36:47 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 696ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    1: <%= @result["docs"]["snippet"] %> 
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303883276180'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:37:05 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (11.6ms)
+Completed 500 Internal Server Error in 5296ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `docs' for #<Hash:0x007fe1c4747c98>):
+    1: <%= @result.docs.snippet %> 
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303909626200'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:37:13 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 66ms (Views: 43.8ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:37:14 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (11.0ms)
+Completed 500 Internal Server Error in 1220ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `docs' for #<Hash:0x007fe1cd384210>):
+    1: <%= @result.docs.snippet %> 
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303892705540'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:39:29 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 08:39:32 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 54ms (Views: 35.3ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:39:35 -0700
+Processing by BooksController#show as HTML
+Completed 500 Internal Server Error in 643ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/models/book.rb:13:in `[]'
+app/models/book.rb:13:in `make_NYT_API_call'
+app/controllers/books_controller.rb:4:in `show'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:40:36 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:40:38 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 1670ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:40:42 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 1213ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:40:49 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (16.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 58ms (Views: 36.8ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:40:50 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 1225ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:40:57 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:41:00 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1250ms (Views: 43.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:41:24 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (12.4ms)
+Completed 500 Internal Server Error in 1674ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `status' for #<Hash:0x007fe1cd1e6200>):
+    1: <%= @result.status %> 
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303901333680'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:50:50 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 1592ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:51:24 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (9.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 4131ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:51:40 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 1234ms (Views: 34.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:51:51 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 1053ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    1: <%= @result["response"]["docs"]["snippet"] %> 
+  
+app/views/books/show.html.erb:1:in `[]'
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303895643660'
+Started GET "/products" for 127.0.0.1 at 2018-05-01 08:52:29 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 58ms (Views: 35.9ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:52:31 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 656ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:54:41 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 1252ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/Guest/Desktop/coffee_ecommerce/app/views/books/show.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/books/show.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:54:47 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 1212ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/Guest/Desktop/coffee_ecommerce/app/views/books/show.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/books/show.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:54:57 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 1212ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<String:0x007fe1c4670dd8>):
+    1: <% @result["response"]["docs"][1]["snippet"].each do |result| %>
+    2:   <%= result %>
+    3: <% end %>
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303895708900'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:57:42 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:57:44 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 681ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    1: <% @results.each do |result| %>
+    2:   <p><%= result["snippet"] %></p>
+    3: <% end %>
+  
+app/views/books/show.html.erb:2:in `[]'
+app/views/books/show.html.erb:2:in `block in _app_views_books_show_html_erb___3773371292385899085_70303819491600'
+app/views/books/show.html.erb:1:in `each'
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303819491600'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:57:53 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (11.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 698ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:57:55 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 676ms (Views: 38.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:58:09 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:58:12 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 673ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<String:0x007fe1cdd6ef78>):
+    1: <% @results.each do |result| %>
+    2:   <p><%= result %></p>
+    3: <% end %>
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303820225920'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:58:32 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:58:34 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 660ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<String:0x007fe1cd08df20>):
+    1: <% @results.each do |result| %>
+    2:   <p><%= result %></p>
+    3: <% end %>
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303818886200'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:59:02 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 775ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<String:0x007fe1c7ad5510>):
+    1: <% @results.each do |result| %>
+    2:   <p><%= result %></p>
+    3: <% end %>
+  
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303919104180'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:59:37 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:59:39 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 706ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 08:59:54 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 795ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:01:08 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 683ms (Views: 27.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:01:28 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 644ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    1: <%= @result["response"]["docs"]["snippet"] %>
+  
+app/views/books/show.html.erb:1:in `[]'
+app/views/books/show.html.erb:1:in `_app_views_books_show_html_erb___3773371292385899085_70303893295600'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:01:41 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 663ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 09:03:25 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2018-05-01 09:03:28 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 82ms (Views: 43.2ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:03:30 -0700
+Processing by BooksController#show as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant BooksController::Book):
+  
+app/controllers/books_controller.rb:3:in `show'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:04:36 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:04:40 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 80ms (Views: 40.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:04:41 -0700
+Processing by BooksController#show as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant BooksController::Book):
+  
+app/controllers/books_controller.rb:3:in `show'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:05:27 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:05:28 -0700
+Processing by BooksController#show as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant BooksController::Book):
+  
+app/controllers/books_controller.rb:3:in `show'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:06:12 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:06:15 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+Completed 200 OK in 101ms (Views: 69.4ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:06:16 -0700
+  
+ActionController::RoutingError (uninitialized constant BooksController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+remotipart (1.4.2) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:06:41 -0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (178.9ms)
+  Rendered layouts/_header.html.erb (3.6ms)
+Completed 200 OK in 592ms (Views: 566.4ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:06:43 -0700
+  
+ActionController::RoutingError (uninitialized constant BooksController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+remotipart (1.4.2) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:07:36 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:07:40 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 55ms (Views: 34.5ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:07:42 -0700
+  
+LoadError (Unable to autoload constant BooksController, expected /Users/Guest/Desktop/coffee_ecommerce/app/controllers/books_controller.rb to define it):
+  
+activesupport (5.2.0) lib/active_support/dependencies.rb:503:in `load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/dependencies.rb:193:in `const_missing'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+activesupport (5.2.0) lib/active_support/dependencies.rb:574:in `get'
+activesupport (5.2.0) lib/active_support/dependencies.rb:605:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/parameters.rb:101:in `binary_params_for?'
+actionpack (5.2.0) lib/action_dispatch/http/parameters.rb:92:in `set_binary_encoding'
+actionpack (5.2.0) lib/action_dispatch/http/parameters.rb:69:in `path_parameters='
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+remotipart (1.4.2) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:08:00 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:08:03 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 673ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 09:08:06 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 57ms (Views: 36.0ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:14:32 -0700
+  
+ArgumentError (unknown firstpos: NilClass):
+  
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:101:in `firstpos'
+actionpack (5.2.0) lib/action_dispatch/journey/gtg/builder.rb:24:in `transition_table'
+actionpack (5.2.0) lib/action_dispatch/journey/routes.rb:60:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:99:in `simulator'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:30:in `eager_load!'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:390:in `eager_load!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:28:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:14:34 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 96ms (Views: 62.0ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:14:36 -0700
+Processing by NewsController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant NewsController::Bestseller):
+  
+app/controllers/news_controller.rb:3:in `index'
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:15:10 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (141.3ms)
+  Rendered layouts/_header.html.erb (4.1ms)
+Completed 200 OK in 531ms (Views: 504.2ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-01 09:15:12 -0700
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 33ms (Views: 30.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:15:13 -0700
+Processing by NewsController#index as HTML
+  Rendering news/index.html.erb within layouts/application
+  Rendered news/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 887ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2018-05-01 09:15:22 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:15:24 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 698ms (Views: 26.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-01 09:15:57 -0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (106.3ms)
+  Rendered layouts/_header.html.erb (3.4ms)
+Completed 200 OK in 331ms (Views: 304.8ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:16:00 -0700
+Processing by NewsController#index as HTML
+  Rendering news/index.html.erb within layouts/application
+  Rendered news/index.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 456ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2018-05-01 09:16:04 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:16:12 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 664ms (Views: 31.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:18:43 -0700
+Processing by NewsController#index as HTML
+  Rendering news/index.html.erb within layouts/application
+  Rendered news/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 503ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/book" for 127.0.0.1 at 2018-05-01 09:18:50 -0700
+Processing by BooksController#show as HTML
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 691ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:18:52 -0700
+Processing by NewsController#index as HTML
+  Rendering news/index.html.erb within layouts/application
+  Rendered news/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 480ms (Views: 37.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/news" for 127.0.0.1 at 2018-05-01 09:19:57 -0700
+Processing by NewsController#index as HTML
+  Rendering news/index.html.erb within layouts/application
+  Rendered news/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 810ms (Views: 28.9ms | ActiveRecord: 0.0ms)
+
+
