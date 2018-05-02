@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  resources :charges
+
   resource :cart, only: [:show]
   resource :book, only: [:show]
   resources :news, only: [:index]
