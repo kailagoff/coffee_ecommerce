@@ -1,4 +1,8 @@
 class TasksController < ApplicationController
+  def new
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.new
+  end
 
   def index
      @tasks = Task.all
@@ -18,4 +22,8 @@ class TasksController < ApplicationController
     end
   end
 
+  private
+    def task_params
+      params.require(:task).permit(:description)
+    end
 end

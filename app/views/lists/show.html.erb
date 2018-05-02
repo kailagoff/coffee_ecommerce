@@ -1,4 +1,8 @@
 <div class="container">
   <h3><%= @list.title %></h3>
+  <% @tasks.each do |task| %>
+    <h3><%= task.description %></h3>
+  <% end %>
+
   <p><%= link_to "Add a task", new_list_task_path(@list), id: "new_task_link", class: "btn btn-default", remote: true %></p>
 </div>

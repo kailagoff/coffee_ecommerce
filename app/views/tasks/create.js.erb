@@ -1,1 +1,4 @@
-$('#new_task_link').hide().after('<%= j render("form") %>')
+$('form').remove();
+$('#new_task_link').show();
+$('ul p').remove();
+$('#list_tasks').append('<li><%= @task.description %></li>')

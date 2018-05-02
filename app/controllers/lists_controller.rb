@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @tasks = Task.all
   end
 
   def create
