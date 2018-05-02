@@ -2,8 +2,12 @@
   <h3><%= @list.title %></h3>
 
   <ul id='list_tasks'>
-    <% @tasks.each do |task| %>
-      <h3><%= task.description %></h3>
+    <% if @list.tasks.any? %>
+      <% @list.tasks.each do |task| %>
+        <li><%= task.description %></li>
+      <% end %>
+    <% else %>
+      <p>None yet!</p>
     <% end %>
   </ul>
 
