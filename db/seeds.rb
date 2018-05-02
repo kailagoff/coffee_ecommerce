@@ -2,22 +2,10 @@ Product.destroy_all
 
 12.times do |index|
   @product = Product.create!(name: Faker::Coffee.blend_name,
-                        price: Faker::Number.decimal(2)
+                        price: Faker::Number.decimal(2),
+                        description: Faker::Coffee.notes
                         )
 
-  # 10.times do
-  #   @order = Order.create!(status: Faker::Friends.character,
-  #                 total_price: Faker::Number.decimal(2),
-  #                 account_id: Faker::Number.number(1))
-  #   end
-
- #  1.times do
- #   OrderItem.create!(quantity: Faker::Number.between(1,5),
- #                 order_id: @order.id,
- #                 product_id: @product.id)
- # end
 end
 
 p "Created #{Product.count} coffee"
-p "Created #{Order.count} orders"
-# p "Created #{OrderItem.count} items"
