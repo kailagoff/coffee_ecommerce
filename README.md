@@ -1,24 +1,58 @@
-# README
+# PDX Perk
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### _By Kaila Goff & Maggie Summers_
 
-Things you may want to cover:
+#### _An application based on the theme of Super Mario. Users can visit a web store with products and reviews pre-populated from a database. 5-2-18_
 
-* Ruby version
+<kbd><img src="app/assets/images/screenshot.png"></kbd>
 
-* System dependencies
+## Description
 
-* Configuration
+_Coffee shop_
 
-* Database creation
+##### Database
 
-* Database initialization
+__
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+##### Seeding
+_This website includes seed data for 50 products and 250 reviews. Using Faker with a loop to seed the database._
 
-* Deployment instructions
+## Install the DATABASE instructions
 
-* ...
+* _Enter into the terminal:_ ``` $bundle install```
+
+* _In the following line enter:_ ```$rake db:create```
+
+* _In the following line enter:_ ```$rake db:migrate```
+
+* _In the following line enter:_ ```$rake db:test:prepare```
+
+* _In the following line enter:_ ```$rake db:seed```
+
+## Setup/Installation Requirements
+
+  * _Enter in the terminal:_ ``` $rails server```
+
+  * _Using a web browser, type in the url_ ``` localhost:3000 ```
+
+## Known Bugs
+
+  * _No known bugs at this time._
+
+## Support and contact details
+
+  _To suggest changes, submit a pull request in the GitHub repository._
+
+## Technologies Used
+
+  * Ruby
+  * Rails
+  * pSQL
+  * ActiveRecord
+
+### License
+
+  *MIT License*
+
+Copyright (c) 2018 **_Kaila Goff & Maggie Summers_**
