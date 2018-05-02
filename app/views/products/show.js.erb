@@ -1,5 +1,3 @@
-// # <% @products.each do |product| %>
-  $('.product_description').each(function() {
-    $(this).text('<%= @product.description %>')
-  });
-// # <% end %>
+$('.product_description').hide().after('<%= j render("show") %>')
+
+// $('#product_name').hide().after('<%= j render("show") %>')

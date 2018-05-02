@@ -13,9 +13,9 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-left">
 				<li><%= link_to 'All Products', products_path %></li>
-				<li><%= link_to 'My Cart', cart_path %></li>
+				<li><%= link_to 'Shopping Cart', cart_path, remote: true %></li><p id="shopping_cart_total"></p>
 				<li><%= link_to 'Books to Rent', news_index_path %></li>
-				<li><%= link_to 'To do', lists_path %></li>
+				<li><%= link_to 'To Do List', lists_path %></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>

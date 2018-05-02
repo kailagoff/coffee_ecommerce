@@ -1,17 +1,18 @@
 <div class="container">
   <% @products.each do |product| %>
     <div class="col-md-3">
-      <h5><%= link_to product.name, product_path(product), remote: true %></h5>
-          <ul>
-              <li class="product_description"></li>
-          </ul>
+      <h5><%= link_to product.name, product_path(product), id: "product_name", remote: true %></h5>
+      <p class="product_description"></p>
+      <% binding.pry %>
+      <div id="<% product.id %>"></div>
       <h6><%= number_to_currency product.price %></h6>
-      <%= form_for @order_item do |f| %>
+
+      <%= form_for [@product, @order_item] do |f| %>
       <%= f.hidden_field :product_id, value: product.id %>
       <%= f.number_field :quantity %>
       <%= f.submit "Add to Cart", class: 'btn btn-info' %>
       <% end %>
       <br><br><br><br><br><br>
     </div>
-  <% end %>
+    <% end %>
 </div>
