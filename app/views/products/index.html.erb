@@ -2,9 +2,7 @@
   <% @products.each do |product| %>
     <div class="col-md-3">
       <h5><%= link_to product.name, product_path(product), id: "product_name", remote: true %></h5>
-      <p class="product_description"></p>
-      <% binding.pry %>
-      <div id="<% product.id %>"></div>
+      <h6 id="product_description" ><%= product.description %></h6>
       <h6><%= number_to_currency product.price %></h6>
 
       <%= form_for [@product, @order_item] do |f| %>
