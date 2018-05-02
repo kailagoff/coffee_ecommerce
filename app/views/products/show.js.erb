@@ -1,0 +1,8 @@
+
+$( "#product_name" ).click(function() {
+    $( "#product_description" ).append('<li><%= @product.description %></li>');
+});
+
+//
+// $('#product_description').hide();
+// $('#product_description').append('<%= @product.description %>')
