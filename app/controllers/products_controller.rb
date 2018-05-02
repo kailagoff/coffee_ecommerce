@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @order_item = current_order.order_items.new
-
   end
 
   def new
@@ -11,10 +10,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all
     @product = Product.find(params[:id])
     respond_to do |format|
-      format.html
-      format.js
+      format.html { redirect_to root_path }
+      format.js { render 'products/show.js.erb'}
     end
   end
 

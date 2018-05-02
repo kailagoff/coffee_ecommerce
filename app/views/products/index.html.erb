@@ -2,9 +2,9 @@
   <% @products.each do |product| %>
     <div class="col-md-3">
       <h5><%= link_to product.name, product_path(product), remote: true %></h5>
-      <ul>
-          <li id="product_description"></li>
-      </ul>
+          <ul>
+              <li class="product_description"></li>
+          </ul>
       <h6><%= number_to_currency product.price %></h6>
       <%= form_for @order_item do |f| %>
       <%= f.hidden_field :product_id, value: product.id %>

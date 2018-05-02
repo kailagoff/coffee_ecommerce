@@ -1,8 +1,5 @@
-
-$( "#product_name" ).click(function() {
-    $( "#product_description" ).append('<li><%= @product.description %></li>');
-});
-
-//
-// $('#product_description').hide();
-// $('#product_description').append('<%= @product.description %>')
+// # <% @products.each do |product| %>
+  $('.product_description').each(function() {
+    $(this).text('<%= @product.description %>')
+  });
+// # <% end %>
