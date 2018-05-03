@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { render 'products/show.js.erb'}
+      format.js
     end
   end
 
