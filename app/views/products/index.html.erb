@@ -1,6 +1,6 @@
 <div class="container">
   <% @products.each do |product| %>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h5><%= link_to product.name, product_path(product), id: "product_name", remote: true %></h5>
       <h6 id="product_description" ><%= product.description %></h6>
       <h6><%= number_to_currency product.price %></h6>

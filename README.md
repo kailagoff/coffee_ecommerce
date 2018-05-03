@@ -2,21 +2,17 @@
 
 #### _By Kaila Goff & Maggie Summers_
 
-#### _An application based on the theme of Super Mario. Users can visit a web store with products and reviews pre-populated from a database. 5-2-18_
+#### _An e-commerce site for a fictitious coffee shop._
 
 <kbd><img src="app/assets/images/screenshot.png"></kbd>
 
 ## Description
 
-_Coffee shop_
-
-##### Database
-
-__
+_An e-commerce site for a fictitious coffee shop. Users can visit a web store with products pre-populated from a database. They can also see books that the coffee shops has available to rent, utilizing the NYT API. Finally, users can use a virtual to-do list, to accomplish their tasks while enjoying their coffee. 4-31-18_
 
 
 ##### Seeding
-_This website includes seed data for 50 products and 250 reviews. Using Faker with a loop to seed the database._
+_This website includes seed data for 12 coffee products, using Faker with a loop to seed the database._
 
 ## Install the DATABASE instructions
 
