@@ -16,7 +16,10 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     if @list.save
       flash[:notice] = "List saved successfully!"
-      redirect_to lists_path
+      respond_to do |format|
+        format.html { redirect_to lists_path }
+        format.js
+      end
     else
       flash[:alert] = "Sorry, couldn't save."
       render :new
